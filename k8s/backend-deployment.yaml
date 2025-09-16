@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: r25gajengi/student-backend:v1
+          image: r25gajengi/student_registration_backend:v1  # Without Database backend image
           ports:
             - containerPort: 8080
           
