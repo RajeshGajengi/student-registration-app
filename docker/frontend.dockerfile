@@ -1,7 +1,6 @@
 FROM node:24-alpine
 COPY . /opt/
-WORKDIR /opt
-ENV BACKEND=18.207.120.207    
+WORKDIR /opt   
 RUN npm install && npm run build
 RUN apk update && apk add apache2
 RUN rm -rf /var/www/localhost/htdocs/*
