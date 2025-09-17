@@ -1,13 +1,15 @@
 package com.student.registration.student_registration_backend;
-
+	
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-
+	
 @SpringBootTest
 class StudentRegistrationBackendApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
+	
+        @Test
+	    void contextLoads() {
+	    }
+	
 }
