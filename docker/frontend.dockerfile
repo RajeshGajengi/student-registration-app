@@ -1,6 +1,6 @@
 FROM node:24-alpine
-COPY . /opt/
-WORKDIR /opt   
+COPY . /app/
+WORKDIR /app   
 RUN npm install && npm run build
 RUN apk update && apk add apache2
 RUN rm -rf /var/www/localhost/htdocs/*

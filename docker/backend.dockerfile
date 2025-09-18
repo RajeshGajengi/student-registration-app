@@ -1,6 +1,6 @@
 FROM maven:3.9.6-eclipse-temurin-17
-COPY . /opt/
-WORKDIR /opt
+COPY . /app/
+WORKDIR /app
 RUN chmod +x mvnw
 RUN  ./mvnw clean package 
 WORKDIR target/
