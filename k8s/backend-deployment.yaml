@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
         - name: backend
-          image: r25gajengi/student-backend:v1
+          image: r25gajengi/student_registration_backend:v2  # Backend images with database
           ports:
             - containerPort: 8080
           env:
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:mariadb://mydb.cujwsmiewj2i.us-east-1.rds.amazonaws.com:3306/student_db"
+              value: "jdbc:mysql://mydb-instance.cujwsmiewj2i.us-east-1.rds.amazonaws.com:3306/student_db"
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
