@@ -24,10 +24,18 @@ The goal of this project is to showcase end-to-end DevOps workflows:
 - Ingress routing (/ → frontend, /api → backend)
 - Easily extendable for CI/CD pipelines
 
+## 🛠️ Tech Stack
+
+- Frontend: React
+- Backend: Spring Boot (Java)
+- Containerization: Docker, Docker Hub
+- Orchestration: Kubernetes (Minikube/Kind/EKS)
+- Networking: Ingress Controller (NGINX)
+- CI/CD (future): Jenkins / GitHub Actions
 
 ## 📂 Project Structure
 ```
-easycrud-devops/
+student-registration-app/
 │── app/
 │   ├── frontend/                 # React frontend code
 │   ├── backend/                  # Spring Boot backend code
@@ -45,9 +53,8 @@ easycrud-devops/
 │   ├── ingress.yml
 │
 │── ci-cd/                        # (future) Jenkins / GitHub Actions pipeline
-│
+│── docs/                         # Screenshots & diagrams
 │── README.md                     # Documentation
-
 
 ```
 <!-- │── .env.example                  # Example environment variables -->
@@ -101,6 +108,12 @@ Before applying ingress, install the NGINX Ingress Controller:
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 ```
 #### 5. Verify Deployment
+```bash
+kubectl get pods
+kubectl get svc
+kubectl get ingress
+
+```
 
 #### 6. Ingress Routing
 
@@ -121,3 +134,12 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 ![Frontend](docs/frontend_with_user.png)
 **Kubernetes Results: Pods, Services, Ingress**
 ![K8s Pods,Service and Ingress](docs/k8s_objects.png)
+
+
+## 🚀 Future Enhancements
+
+- Add persistent DB (MySQL/Postgres) with K8s StatefulSet
+- Implement CI/CD pipeline (Jenkins/GitHub Actions)
+- Setup Monitoring & Logging (Prometheus + Grafana, EFK Stack)
+- Deploy on AWS EKS with RDS backend
+- Use Kubernetes Secrets for sensitive configs
