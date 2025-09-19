@@ -1,4 +1,4 @@
-EasyCRUD - Student Registration System (DevOps Project)
+# EasyCRUD - Student Registration System (DevOps Project)
 
 ## 📖 About the Project
 
@@ -33,8 +33,8 @@ easycrud-devops/
 │   ├── backend/                  # Spring Boot backend code
 │
 │── docker/                       # Dockerfiles and Compose
-│   ├── frontend.Dockerfile
-│   ├── backend.Dockerfile
+│   ├── frontend.dockerfile
+│   ├── backend.dockerfile
 │   ├── docker-compose.yml
 │
 │── k8s/                          # Kubernetes manifests
@@ -52,7 +52,7 @@ easycrud-devops/
 ```
 <!-- │── .env.example                  # Example environment variables -->
 
-
+## Architecture
 
 ## ⚙️ Prerequisites
 
@@ -67,18 +67,17 @@ easycrud-devops/
 #### 1. Clone Application Repository
 
 ```bash
-git clone https://github.com/your-username/easycrud-devops.git
-cd easycrud-devops
+git clone https://github.com/RajeshGajengi/student-registration-app
+cd student-registration-app
 ```
 
 #### 2. Dockerize Application
 
 - Created separate Dockerfiles for frontend & backend
-- Example build command:
+- Image build commands:
 ```bash
-docker build -t <dockerhub-username>/easycrud-frontend:latest -f docker/frontend.Dockerfile .
-docker build -t <dockerhub-username>/easycrud-backend:latest -f docker/backend.Dockerfile .
-
+docker build -t <dockerhub-username>/easycrud-backend:latest -f docker/backend.dockerfile ./app/backend
+docker build -t <dockerhub-username>/easycrud-frontend:latest -f docker/frontend.dockerfile ./app/frontend
 ```
 
 #### 3. Push to Docker Hub
@@ -91,17 +90,34 @@ docker push <dockerhub-username>/easycrud-backend:latest
 
 Created deployments, services, and ingress
 ```bash
-
+kubectl apply -f k8s/backend-deployment.yaml
+kubectl apply -f k8s/backend-service.yaml
+kubectl apply -f k8s/frontend-deployment.yaml
+kubectl apply -f k8s/frontend-service.yaml
+kubectl apply -f k8s/ingress.yaml
 ```
+Before applying ingress, install the NGINX Ingress Controller:
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+```
+#### 5. Verify Deployment
 
-#### 5. Ingress Routing
+#### 6. Ingress Routing
 
 - `/` → Frontend (React)
 
 - `/api` → Backend (Spring Boot)
 
-#### 6. Access Application
+#### 7. Access Application
 
 - Frontend: `http://<Ingress-dns>/`
 
 - Backend API: `http://<ingress-dns>/api`
+
+
+## Results:
+**Frontend Result**
+![Frontend](docs/frontend.png)
+![Frontend](docs/frontend_with_user.png)
+**Kubernetes Results: Pods, Services, Ingress**
+![K8s Pods,Service and Ingress](docs/k8s_objects.png)
