@@ -16,7 +16,7 @@ The main goal of this project is to showcase an end-to-end DevOps workflow, cove
 - Deploying to a Kubernetes cluster on AWS EKS with Ingress routing
 - Setting up a foundation for CI/CD pipelines (Jenkins / GitHub Actions)
 
-✨ Features
+## ✨ Features
 
 - Full-stack app (React + Spring Boot)
 - Backend connected to Amazon RDS (MySQL/Postgres)
@@ -24,7 +24,7 @@ The main goal of this project is to showcase an end-to-end DevOps workflow, cove
 - Containerized using Docker
 - Images stored in Docker Hub
 - Orchestrated with Kubernetes on AWS EKS
-- Ingress routing: / → frontend, /api → backend
+- Ingress routing: `/` → frontend, `/api` → backend
 - Extensible for CI/CD and monitoring integrations
 
 ## 🛠️ Tech Stack
