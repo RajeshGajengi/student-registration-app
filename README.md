@@ -66,7 +66,9 @@ student-registration-app/
 ```
 <!-- │── .env.example                  # Example environment variables -->
 
-## Architecture
+## 🏗️ Architecture
+
+![Architecture](docs/architecture.png)
 
 ## ⚙️ Prerequisites
 
