@@ -138,7 +138,7 @@ EXIT;
 # MySQL
 mysql -h <RDS-endpoint> -u <db-username> -p student_db < app/database/database_schema.sql
 ```
-📌 More details: ![Database Setup](app/database/DATABASE_SETUP.md)
+📌 More details: [Database Setup](app/database/DATABASE_SETUP.md)
 
 
 #### 3. Dockerize Application
