@@ -118,41 +118,45 @@ env:
 git clone https://github.com/RajeshGajengi/student-registration-app
 cd student-registration-app
 ```
-####  Create Database using RDS:
-Once the database is created, install the MySQL client and connect to RDS:
+#### 2. Setup Database on Amazon RDS
+1. Create an RDS instance (MySQL).
+2. Install MySQL client:
 ```bash
-apt install mysql-client -y  # install mysql-client
-
-mysql -h <DNS of RDS> -u <user-name> -p   # connect to rds
+apt install mysql-client -y  
 ```
-Create the database:
+3. Connect to RDS:
+```sql
+mysql -h <RDS-endpoint> -u <db-username> -p
+```
+4. Create a new database:
 ```sql
 CREATE DATABASE student_db;
 EXIT;
 ```
-then load sql file into newly created database, you can more learn about this sql file from app/database/DATABASE_SETUP.md
+5. Load schema file:
 ```bash
 # MySQL
-mysql -h <DNS of RDS> -u your_username -p student_db < database_schema.sql
+mysql -h <RDS-endpoint> -u <db-username> -p student_db < app/database/database_schema.sql
 ```
+📌 More details: ![Database Setup](app/database/DATABASE_SETUP.md)
 
 
-#### 2. Dockerize Application
+#### 3. Dockerize Application
 
-- Created separate Dockerfiles for frontend & backend
+- Separate Dockerfiles are provided for frontend and backend inside `docker/`
 - Image build commands:
 ```bash
 docker build -t <dockerhub-username>/easycrud-backend:latest -f docker/backend.dockerfile ./app/backend
 docker build -t <dockerhub-username>/easycrud-frontend:latest -f docker/frontend.dockerfile ./app/frontend
 ```
 
-#### 3. Push to Docker Hub
+#### 4. Push to Docker Hub
 ```bash
 docker push <dockerhub-username>/easycrud-frontend:latest
 docker push <dockerhub-username>/easycrud-backend:latest
 ```
 
-#### 4. Containerize with Kubernetes (AWS EKS)
+#### 5. Containerize with Kubernetes (AWS EKS)
 
 Created deployments, services, and ingress
 ```bash
@@ -168,7 +172,7 @@ Before applying ingress, install the NGINX Ingress Controller:
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 ```
-#### 5. Verify Deployment
+#### 6. Verify Deployment
 ```bash
 kubectl get pods
 kubectl get svc
@@ -176,16 +180,15 @@ kubectl get ingress
 kubectl get secrets
 ```
 
-#### 6. Ingress Routing
+#### 7. Ingress Routing
 
 - `/` → Frontend (React)
 
 - `/api` → Backend (Spring Boot connected to RDS)
 
-#### 7. Access Application
+#### 8. Access Application
 
 - Frontend: `http://<Ingress-dns>/`
-
 - Backend API: `http://<ingress-dns>/api`
 - Database: Hosted on Amazon RDS
 
